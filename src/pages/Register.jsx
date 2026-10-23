@@ -25,29 +25,48 @@ const Register = () => {
 
     navigate("/edit-profile");
   };
-
+  const handleGoLogin = async () => {
+    navigate("/login");
+  };
   return (
-    <form onSubmit={handleRegister}>
-      <h1>Register</h1>
+    <div className="text-center bg-sky-800 rounded-3xl md:mx-130 mx-20 my-50 py-8">
+      <form onSubmit={handleRegister}>
+        <h1 className="pb-5 text-3xl font-bold">Register</h1>
 
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
+        <div className="pb-4">
+          <input
+            className="border rounded-2xl p-1 md:min-w-80"
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
 
-      <input
-        type="password"
-        placeholder="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+        <div className="pb-4">
+          <input
+            className="border rounded-2xl p-1 md:min-w-80"
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
 
-      <button type="submit">
-        Register
-      </button>
-    </form>
+        <button className="border rounded-4xl px-3 py-1 text-xl bg-purple-800 hover:bg-purple-900" type="submit">
+          Register
+        </button>
+
+        <div className="py-4 text-xl">
+          <p>Already have an Account? 
+          <button className="p-1 text-blue-400 underline hover:text-blue-500" 
+                  type="button"
+                  onClick={handleGoLogin}>
+            Login
+          </button> </p>
+        </div>
+      </form>
+    </div>
   );
 };
 

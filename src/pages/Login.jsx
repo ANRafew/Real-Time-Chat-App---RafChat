@@ -26,6 +26,11 @@ const Login = () => {
 
     navigate("/chat");
   };
+  
+  const handleGoRegister = async () => {
+
+    navigate("/Register");
+  };
 
   return (
     <div className="text-center bg-sky-800 rounded-3xl md:mx-130 mx-20 my-50 py-8">
@@ -55,6 +60,15 @@ const Login = () => {
         <button className="border rounded-4xl px-3 py-1 text-xl bg-purple-800 hover:bg-purple-900" type="submit">
           Login
         </button>
+
+        <div className="py-4 text-xl">
+          <p>Don't have an Account? 
+          <button className="p-1 text-blue-400 underline hover:text-blue-500" 
+                  type="button"
+                  onClick={handleGoRegister}>
+            Register
+          </button> </p>
+        </div>
       </form>
     </div>
   );

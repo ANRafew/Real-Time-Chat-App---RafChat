@@ -73,20 +73,24 @@ const EditProfile = () => {
   };
 
   return (
-    <div>
-      <h1>Edit Profile</h1>
-
+    <div className="text-center bg-sky-800 rounded-3xl md:mx-130 mx-20 my-50 py-8">
+      
       <form onSubmit={handleSaveProfile}>
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) =>
-            setUsername(e.target.value)
-          }
-        />
+        <h1 className="pb-5 text-3xl font-bold">Edit Profile</h1>
+        <div className="p-3">
+          <input
+            className="border rounded-2xl p-1 md:min-w-80"
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) =>
+              setUsername(e.target.value)
+            }
+          />
+        </div>
 
         <button
+          className="border rounded-4xl px-3 py-1 text-xl bg-purple-800 hover:bg-purple-900"
           type="submit"
           disabled={loading}
         >

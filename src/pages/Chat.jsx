@@ -40,22 +40,23 @@ const Chat = () => {
   };
 
   return (
-    <div>
-      <h1>RafChat</h1>
+    <div className="">
+      <div className="bg-slate-700 p-3 flex justify-between items-center">
+        <p>RafChat</p>
 
-      {user && (
-        <>
-          <p>Email: {user.email}</p>
+        {user && (
+          <div className="flex gap-3">
+            <button onClick={handleEditProfile} className="border rounded-4xl px-3 py-1 text-l bg-purple-800 hover:bg-purple-900">
+              Edit Profile
+            </button>
 
-          <button onClick={handleEditProfile}>
-            Edit Profile
-          </button>
-
-          <button onClick={handleLogout}>
-            Logout
-          </button>
-        </>
-      )}
+            <button onClick={handleLogout} className="border rounded-4xl px-3 py-1 text-l bg-purple-800 hover:bg-purple-900">
+              Logout
+            </button>
+          </div>
+        )}
+      </div>
+    
     </div>
   );
 };
