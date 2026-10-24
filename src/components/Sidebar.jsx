@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
+  const navigate = useNavigate();
 
   const filteredUsers = users.filter(
     (user) =>
@@ -62,6 +64,9 @@ const Sidebar = () => {
         {filteredUsers.map((user) => (
             <div
                 key={user.id}
+                onClick={() =>
+                    navigate(`/Profile/${user.id}`)
+                }
                 className="
                     flex
                     items-center
