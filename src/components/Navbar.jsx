@@ -65,7 +65,9 @@ const Navbar = () => {
     left-0
     right-0
     z-50
-    h-16">
+    h-16
+    
+    ">
         <button className="flex gap-1 px-2 cursor-pointer" onClick={handleChat}>
           <img src="/LR.png" alt="logo" 
             className="size-6"/>

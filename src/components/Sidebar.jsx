@@ -65,7 +65,7 @@ const Sidebar = () => {
             <div
                 key={user.id}
                 onClick={() =>
-                    navigate(`/Profile/${user.id}`)
+                    navigate(`/profile/${user.id}`)
                 }
                 className="
                     flex
@@ -104,10 +104,10 @@ const Sidebar = () => {
                     >
                     {user.username?.charAt(0).toUpperCase()}
                 </div>
-  )}
+              )}
 
-  <p>{user.username}</p>
-</div>
+              <p>{user.username}</p>
+            </div>
         ))}
         </div>
 

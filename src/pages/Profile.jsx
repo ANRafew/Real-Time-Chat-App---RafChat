@@ -79,7 +79,7 @@ const Profile = () => {
               bg-blue-600
               rounded-lg
               hover:bg-blue-700"
-              onClick={() => navigate(`/chat/${profile.id}`)}
+              onClick={() => navigate(`/conversation/${profile.id}`)}
           >
             Send Message
           </button>

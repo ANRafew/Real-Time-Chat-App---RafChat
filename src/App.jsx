@@ -5,6 +5,7 @@ import Register from "./pages/Register";
 import Chat from "./pages/Chat";
 import Profile from "./pages/Profile";
 import EditProfile from "./pages/EditProfile";
+import Conversation from "./pages/Conversation";
 
 const App = () => {
   return (
@@ -31,8 +32,8 @@ const App = () => {
           />
       
           <Route
-            path="/chat/:userId"
-            element={<Chat />}
+            path="/conversation/:userId"
+            element={<Conversation />}
           />
 
           <Route
