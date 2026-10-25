@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { supabase } from "../lib/supabase";
 import Navbar from "../components/Navbar";
 
 const Profile = () => {
   const { id } = useParams();
-
   const [profile, setProfile] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getProfile = async () => {
@@ -34,7 +35,7 @@ const Profile = () => {
   return (
     <>
       <Navbar/>
-      <div className="p-8">
+      <div className="p-24">
         <div className="flex flex-col items-center gap-4">
 
           {profile.avatar_url ? (
@@ -77,8 +78,8 @@ const Profile = () => {
               py-2
               bg-blue-600
               rounded-lg
-              hover:bg-blue-700
-            "
+              hover:bg-blue-700"
+              onClick={() => navigate(`/chat/${profile.id}`)}
           >
             Send Message
           </button>

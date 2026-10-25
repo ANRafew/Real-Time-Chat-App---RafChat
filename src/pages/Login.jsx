@@ -21,16 +21,17 @@ const Login = () => {
       alert(error.message);
       return;
     }
-
     // alert("Login successful!");
-
     navigate("/chat");
   };
   
   const handleGoRegister = async () => {
-
     navigate("/Register");
   };
+  if (!Login) {
+    return <p className="text-center">Loading...</p>;
+  }
+
 
   return (
     <div className="text-center bg-sky-800 rounded-3xl md:mx-130 mx-20 my-50 py-8">

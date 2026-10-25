@@ -40,7 +40,7 @@ const Sidebar = () => {
 
   return (
     <aside className="h-screen sticky top-0 bg-slate-800 p-4">
-      <h2 className="text-xl font-bold mb-4">
+      <h2 className="text-xl font-bold mb-4 mt-16">
         People
       </h2>
 
@@ -60,7 +60,7 @@ const Sidebar = () => {
         "
       />
 
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 flex-1 overflow-y-auto">
         {filteredUsers.map((user) => (
             <div
                 key={user.id}

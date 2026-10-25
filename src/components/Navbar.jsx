@@ -3,11 +3,21 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "../lib/supabase";
 import Sidebar from "../components/Sidebar";
 import Chat from "../pages/Chat";
+import { useLocation } from "react-router-dom";
 
 const Navbar = () => {
+  const location = useLocation();
   const navigate = useNavigate();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    if (location.pathname === "/Chat") {
+      setIsSidebarOpen(true);
+    } else {
+      setIsSidebarOpen(false);
+    }
+  }, [location.pathname]);
 
   useEffect(() => {
     const getCurrentUser = async () => {
@@ -50,7 +60,12 @@ const Navbar = () => {
 
   return (
     <div className="">
-      <nav className="bg-slate-700 p-3 flex justify-between items-center">
+      <nav className="bg-slate-700 p-3 flex justify-between items-center fixed
+    top-0
+    left-0
+    right-0
+    z-50
+    h-16">
         <button className="flex gap-1 px-2 cursor-pointer" onClick={handleChat}>
           <img src="/LR.png" alt="logo" 
             className="size-6"/>
@@ -74,6 +89,8 @@ const Navbar = () => {
             </button>
           </div>
         )}
+
+        
       </nav>
     
       
