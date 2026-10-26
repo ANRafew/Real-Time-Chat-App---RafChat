@@ -77,30 +77,12 @@ const Conversation = () => {
       .on(
         "postgres_changes",
         {
-          event: "INSERT",
+          event: "*",
           schema: "public",
           table: "messages",
         },
-        (payload) => {
-          const newMessage = payload.new;
-
-          const isRelevant =
-            (newMessage.sender_id === currentUser.id &&
-              newMessage.receiver_id === userId) ||
-            (newMessage.sender_id === userId &&
-              newMessage.receiver_id === currentUser.id);
-
-          if (!isRelevant) return;
-
-          setMessages((prev) => {
-            const exists = prev.some(
-              (msg) => msg.id === newMessage.id
-            );
-
-            if (exists) return prev;
-
-            return [...prev, newMessage];
-          });
+        async () => {
+          await loadMessages(currentUser);
         }
       )
       .subscribe();
@@ -130,9 +112,26 @@ const Conversation = () => {
     }
 
     setMessage("");
-
-    
   };
+
+  const markMessagesAsSeen = async () => {
+    if (!currentUser || !userId) return;
+
+    const { error } = await supabase
+      .from("messages")
+      .update({ seen: true })
+      .eq("sender_id", userId)
+      .eq("receiver_id", currentUser.id)
+      .eq("seen", false);
+
+    if (error) {
+      console.error(error.message);
+    }
+  };
+
+  useEffect(() => {
+    markMessagesAsSeen();
+  }, [currentUser, userId]);
 
   if (!recipient) {
     return (
@@ -235,10 +234,18 @@ const Conversation = () => {
                 {msg.content}
               </div>
 
-              <div className="text-xs text-slate-400 mt-1">
-                {new Date(
-                  msg.created_at
-                ).toLocaleTimeString()}
+              <div className="text-xs text-slate-400 mt-1 flex items-center gap-2">
+                <span>
+                  {new Date(
+                    msg.created_at
+                  ).toLocaleTimeString()}
+                </span>
+
+                {msg.sender_id === currentUser?.id && (
+                  <span className="font-bold">
+                    {msg.seen ? "Seen" : "Delivered"}
+                  </span>
+                )}
               </div>
             </div>
           ))}

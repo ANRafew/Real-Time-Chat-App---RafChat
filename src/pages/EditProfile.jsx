@@ -77,7 +77,7 @@ const EditProfile = () => {
     <>
       <Navbar/>
     
-      <div className="text-center bg-sky-800 rounded-3xl md:mx-130 mx-20 my-50 py-8">
+      <div className="text-center bg-sky-800 rounded-3xl md:mx-130 mx-5 my-50 py-8">
         
         <form onSubmit={handleSaveProfile}>
           <h1 className="pb-5 text-3xl font-bold">Edit Profile</h1>

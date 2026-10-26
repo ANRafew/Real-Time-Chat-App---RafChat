@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "../lib/supabase";
 import Sidebar from "../components/Sidebar";
-import Chat from "../pages/Chat";
 import { useLocation } from "react-router-dom";
 
 const Navbar = () => {
@@ -60,41 +59,107 @@ const Navbar = () => {
 
   return (
     <div className="">
-      <nav className="bg-slate-700 p-3 flex justify-between items-center fixed
-    top-0
-    left-0
-    right-0
-    z-50
-    h-16
-    
-    ">
-        <button className="text-3xl font-bold flex gap-1 px-2 cursor-pointer" onClick={handleChat}>
-          <img src="/LR.png" alt="logo" 
-            className="size-9"/>
-          RafChat
+      <nav
+        className="
+          bg-slate-700
+          fixed
+          top-0
+          left-0
+          right-0
+          z-50
+          h-16
+          px-3
+          flex
+          items-center
+          justify-between
+        "
+      >
+        {/* Logo */}
+        <button
+          className="
+            flex
+            items-center
+            gap-2
+            font-bold
+            text-lg
+            md:text-3xl
+            whitespace-nowrap
+            cursor-pointer
+          "
+          onClick={handleChat}
+        >
+          <img
+            src="/LR.png"
+            alt="logo"
+            className="w-8 h-8 md:w-9 md:h-9"
+          />
+          <span>RafChat</span>
         </button>
 
         {user && (
-          <div className="flex gap-3">
-            <div>
-              <button
+          <div className="flex items-center gap-2 md:gap-3">
+
+            {/* Sidebar Toggle */}
+            <button
               onClick={toggleSidebar}
-              className="text-3xl hover:text-gray-400 transition-all duration-200"
+              className="
+                text-xl
+                md:text-3xl
+                hover:text-gray-400
+                transition-all
+                duration-200
+              "
             >
               <i className="fa-solid fa-users-line"></i>
             </button>
-            </div>
-            <button onClick={handleEditProfile} className="border rounded-4xl px-3 py-1 text-l bg-purple-800 hover:bg-purple-900">
-              Edit Profile
+
+            {/* Edit Profile */}
+            <button
+              onClick={handleEditProfile}
+              className="
+                border
+                rounded-full
+                px-2
+                md:px-3
+                py-1
+                text-sm
+                md:text-base
+                bg-purple-800
+                hover:bg-purple-900
+              "
+            >
+              <span className="hidden sm:inline">
+                Edit Profile
+              </span>
+
+              <span className="sm:hidden">
+                <i className="fa-solid fa-user-pen"></i>
+              </span>
             </button>
 
-            <button onClick={handleLogout} className="border rounded-4xl px-3 py-1 text-l bg-purple-800 hover:bg-purple-900">
-              Logout
+            {/* Logout */}
+            <button
+              onClick={handleLogout}
+              className="
+                border
+                rounded-full
+                px-2
+                md:px-3
+                py-1
+                text-sm
+                md:text-base
+                bg-purple-800
+                hover:bg-purple-900
+              "
+            >
+              
+              <div className="">
+                <i className="fa-solid fa-right-from-bracket"></i>
+              </div>
             </button>
+
           </div>
         )}
-
-        
       </nav>
     
       
