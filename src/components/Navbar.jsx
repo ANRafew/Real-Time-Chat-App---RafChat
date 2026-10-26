@@ -12,12 +12,12 @@ const Navbar = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    if (location.pathname === "/Chat") {
-      setIsSidebarOpen(true);
-    } else {
-      setIsSidebarOpen(false);
-    }
-  }, [location.pathname]);
+  const path = location.pathname.toLowerCase();
+
+  setIsSidebarOpen(
+    path.startsWith("/chat") 
+  );
+}, [location.pathname]);
 
   useEffect(() => {
     const getCurrentUser = async () => {
@@ -68,20 +68,22 @@ const Navbar = () => {
     h-16
     
     ">
-        <button className="flex gap-1 px-2 cursor-pointer" onClick={handleChat}>
+        <button className="text-3xl font-bold flex gap-1 px-2 cursor-pointer" onClick={handleChat}>
           <img src="/LR.png" alt="logo" 
-            className="size-6"/>
+            className="size-9"/>
           RafChat
         </button>
 
         {user && (
           <div className="flex gap-3">
-            <button
+            <div>
+              <button
               onClick={toggleSidebar}
-              className="text-xl hover:text-2xl transition-all duration-200"
+              className="text-3xl hover:text-gray-400 transition-all duration-200"
             >
-              ☰
+              <i className="fa-solid fa-users-line"></i>
             </button>
+            </div>
             <button onClick={handleEditProfile} className="border rounded-4xl px-3 py-1 text-l bg-purple-800 hover:bg-purple-900">
               Edit Profile
             </button>

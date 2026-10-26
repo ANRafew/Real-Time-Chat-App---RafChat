@@ -69,6 +69,47 @@ const Conversation = () => {
     });
   }, [messages]);
 
+  useEffect(() => {
+    if (!currentUser || !userId) return;
+
+    const channel = supabase
+      .channel(`conversation-${userId}`)
+      .on(
+        "postgres_changes",
+        {
+          event: "INSERT",
+          schema: "public",
+          table: "messages",
+        },
+        (payload) => {
+          const newMessage = payload.new;
+
+          const isRelevant =
+            (newMessage.sender_id === currentUser.id &&
+              newMessage.receiver_id === userId) ||
+            (newMessage.sender_id === userId &&
+              newMessage.receiver_id === currentUser.id);
+
+          if (!isRelevant) return;
+
+          setMessages((prev) => {
+            const exists = prev.some(
+              (msg) => msg.id === newMessage.id
+            );
+
+            if (exists) return prev;
+
+            return [...prev, newMessage];
+          });
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, [currentUser, userId]);
+
   const handleSendMessage = async () => {
     if (!message.trim()) return;
 
@@ -90,13 +131,13 @@ const Conversation = () => {
 
     setMessage("");
 
-    await loadMessages(currentUser);
+    
   };
 
   if (!recipient) {
     return (
       <>
-        <Navbar />
+        {/* <Navbar /> */}
         <div className="pt-20 text-center">
           Loading...
         </div>
@@ -106,7 +147,7 @@ const Conversation = () => {
 
   return (
     <>
-      <Navbar />
+      
         {/* Header */}
         <div className="border-b bg-slate-800 p-4 flex items-center gap-3 mt-16
             fixed
@@ -116,6 +157,7 @@ const Conversation = () => {
             z-50
             h-16
         ">
+          <Navbar />
           {recipient.avatar_url ? (
             <img
               src={recipient.avatar_url}
@@ -163,7 +205,7 @@ const Conversation = () => {
         {/* Messages */}
         <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-3 mt-16 mb-18">
           {messages.length === 0 && (
-            <div className="text-center text-slate-400 ">
+            <div className="text-center text-slate-400 py-30">
               Start your conversation with{" "}
               {recipient.username}
             </div>
