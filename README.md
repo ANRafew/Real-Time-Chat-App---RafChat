@@ -1,16 +1,105 @@
-# React + Vite
+# RafChat
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![React](https://img.shields.io/badge/React-19-blue)](https://react.dev/)
+[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4-38BDF8)](https://tailwindcss.com/)
+[![Supabase](https://img.shields.io/badge/Supabase-Backend-3ECF8E)](https://supabase.com/)
+[![Vercel](https://img.shields.io/badge/Vercel-Deployed-black)](https://vercel.com/)
 
-Currently, two official plugins are available:
+Real-time messaging application built with React, Tailwind CSS, and Supabase.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🚀 Realtime Messaging • 👤 Profiles • ✅ Seen Status • 📸 Avatar Upload
 
-## React Compiler
+🔗 Live Demo: https://rafchat.vercel.app/
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the ESLint configuration
+- Authentication (Register, Login, Logout)
+- Custom user profiles
+- Avatar upload
+- User discovery and search
+- Recent conversations
+- Real-time messaging
+- Seen status 
+- Profile pages
+- Responsive design
+- Persistent message history
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech Stack
+
+### Frontend
+- React
+- React Router
+- Tailwind CSS
+
+### Backend
+- Supabase Authentication
+- Supabase Database (PostgreSQL)
+- Supabase Realtime
+- Supabase Storage
+
+### Deployment
+- Vercel
+
+## Screenshots
+
+### Chat Page
+![Chat Screenshot](./screenshots/chat.png)
+
+### Conversation Page
+![Conversation Screenshot](./screenshots/conversation.png)
+
+### Profile Page
+![Profile Screenshot](./screenshots/profile.png)
+
+### Edit Profile Page
+![Edit Profile Screenshot](./screenshots/editProfile.png)
+
+## Local Development
+
+Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/rafchat.git
+cd rafchat
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Create a `.env` file:
+
+```env
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
+
+Run:
+
+```bash
+npm run dev
+```
+
+## Project Status
+
+✅ RafChat v1.0.0 Complete
+
+### Completed
+- Authentication
+- Profiles
+- Avatar Upload
+- Real-Time Messaging
+- Recent Chats
+- Seen Status
+
+### Future Improvements
+- Image Messaging
+- Unread Message Counts
+- Online Status
+- Typing Indicator
+
+## Author
+
+Md. Aryan Nur Rafew
