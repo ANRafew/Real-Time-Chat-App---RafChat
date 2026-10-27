@@ -39,7 +39,7 @@ const Sidebar = () => {
   }, []);
 
   return (
-    <aside className="h-screen top-0 bg-slate-800 p-4 fixed w-full">
+    <aside className="h-screen top-0 bg-slate-800 p-4 fixed md:w-100">
       <h2 className="text-xl font-bold mb-4 mt-16">
         People
       </h2>
